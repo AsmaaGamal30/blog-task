@@ -1,0 +1,319 @@
+/* General Styles */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Light background color for contrast */
+}
+
+/* Header and Footer Styles */
+header {
+    display: flex;
+    justify-content: space-between; /* Space between left and right */
+    align-items: center; /* Center vertically */
+    padding: 15px;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+}
+
+.header-left, .header-right {
+    display: flex; /* Align buttons in a row */
+}
+
+/* Input Styles */
+header input[type="text"] {
+    padding: 10px; /* Padding for search input */
+    margin: 0 5px; /* Margin for spacing */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 15px; /* Added padding for buttons */
+    border-radius: 5px; /* Rounded corners for buttons */
+    background-color: #007BFF; /* Bootstrap primary color */
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Main Content Area */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+/* Post Styles */
+.post {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 15px 0;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 5px; /* Rounded corners */
+    background-color: #fff; /* White background for posts */
+    transition: box-shadow 0.3s, transform 0.3s; /* Transition effects */
+}
+
+.post:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.post-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Space below image */
+}
+
+/* Post Title Styles */
+.post-title {
+    color: #007BFF; /* Bootstrap primary color */
+    text-decoration: none;
+    font-size: 1.2em; /* Increase font size for titles */
+}
+
+.post-title:hover {
+    text-decoration: underline; /* Underline on hover for emphasis */
+}
+
+/* Form Styles */
+.form-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff; /* White background for forms */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Space between form groups */
+}
+
+.form-container label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.form-container input,
+.form-container textarea {
+    width: calc(100% - 20px); /* Subtract total horizontal margin */
+    padding: 10px; /* Increased padding for comfort */
+    margin: 10px 0; /* Vertical margin */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s; /* Smooth transition on focus */
+}
+
+.form-container input:focus,
+.form-container textarea:focus {
+    border-color: #007BFF; /* Change border color on focus */
+}
+
+/* Error Message Styles */
+.error-message {
+    color: #dc3545; /* Bootstrap danger color */
+    font-size: 0.875em; /* Slightly smaller font */
+    margin-top: 5px; /* Space between the input field and the error message */
+    margin-bottom: 10px; /* Space below the error message */
+}
+
+/* Post Details Styles */
+.post-details {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Comment Form Styles */
+.comment-form {
+    margin-top: 20px;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.comment-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.comment-form input {
+    width: calc(100% - 20px); /* Subtract total horizontal margin */
+    padding: 10px; /* Increased padding for comfort */
+    margin: 10px 0; /* Vertical margin */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Comment Section Styles */
+.comment-section {
+    margin-top: 20px;
+}
+
+.comment {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd; /* Softer border for comments */
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Table Styles */
+table {
+    width: 90%;
+    margin: auto;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+/* Image Styles */
+img {
+    max-width: 100px;
+    height: auto;
+}
+
+.profile-container {
+    text-align: center; /* Center align profile elements */
+    margin-bottom: 20px; /* Space below profile section */
+}
+
+.profile-photo {
+    max-width: 100px; /* Adjust size as needed */
+    height: 100px; /* Make height equal to width for a perfect circle */
+    border-radius: 50%; /* Circular shape */
+    object-fit: cover; /* Crop the image to fit */
+    margin-bottom: 10px; /* Space below the photo */
+}
+
+.profile-details {
+    margin: 10px 0; /* Vertical margin for spacing */
+    font-size: 1em; /* Font size for normal text */
+}
+
+.btn {
+    padding: 10px 15px; /* Button padding */
+    border-radius: 5px; /* Rounded corners for buttons */
+    color: white; /* Text color */
+    background-color: #007BFF; /* Button color */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.update-form {
+    max-width: 400px; /* Max width of the form */
+    margin: auto; /* Center the form */
+    padding: 20px; /* Padding for comfort */
+    border: 1px solid #ccc; /* Border for form */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #fff; /* White background */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+.update-form label {
+    display: block; /* Block display for labels */
+    margin: 10px 0 5px; /* Margin for spacing */
+}
+
+.update-form input[type="file"] {
+    margin: 10px 0; /* Margin for spacing */
+}
+
+.update-form input {
+    width: calc(100% - 20px); /* Full width with padding */
+    padding: 10px; /* Padding for comfort */
+    margin: 5px 0; /* Margin for spacing */
+    border: 1px solid #ccc; /* Border for inputs */
+    border-radius: 4px; /* Rounded corners */
+}
+
+.btn {
+    margin-top: 10px; /* Margin above button */
+    padding: 10px 15px; /* Button padding */
+    border-radius: 5px; /* Rounded corners for buttons */
+    color: white; /* Text color */
+    background-color: #007BFF; /* Button color */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center; /* Center the pagination */
+    margin-top: 20px; /* Add some margin */
+}
+
+.pagination a, .pagination span {
+    display: inline-block;
+    padding: 8px 12px; /* Adjust padding */
+    margin: 0 4px; /* Adjust margin */
+    border: 1px solid #007bff; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    color: #007bff; /* Text color */
+    text-decoration: none; /* Remove underline */
+}
+
+.pagination a:hover {
+    background-color: #007bff; /* Background color on hover */
+    color: white; /* Text color on hover */
+}
+
+.pagination .active span {
+    background-color: #007bff; /* Active page background color */
+    color: white; /* Active page text color */
+    border: 1px solid #007bff; /* Active page border */
+}
+
+.pagination .disabled span {
+    color: #ccc; /* Disabled link color */
+    pointer-events: none; /* Prevent clicks */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column; /* Stack elements vertically on small screens */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .header-left, .header-right {
+        width: 100%; /* Full width for buttons */
+        justify-content: space-between; /* Space between buttons */
+    }
+}
