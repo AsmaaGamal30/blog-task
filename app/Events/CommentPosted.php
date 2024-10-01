@@ -11,7 +11,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class CommentPosted
+class CommentPosted implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -30,7 +30,7 @@ class CommentPosted
      */
     public function broadcastOn()
     {
-        return new Channel('post-comments.' . $this->comment->post_id);
+        return new PrivateChannel('post-comments.' . $this->comment->post_id);
     }
 
     public function broadcastWith()
@@ -40,7 +40,7 @@ class CommentPosted
                 'id' => $this->comment->id,
                 'user' => $this->comment->user->username,
                 'user_id' => $this->comment->user_id,
-                'body' => $this->comment->comment,
+                'comment' => $this->comment->comment,
                 'post_id' => $this->comment->post_id
             ]
         ];

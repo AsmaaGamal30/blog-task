@@ -23,14 +23,14 @@ class AuthController extends Controller
 
     public function showProfile()
     {
-        $user = $this->authRepository->getUserById(Auth::id());
+        $user = Auth::user();
         $posts = $this->authRepository->posts($user->id);
         return view('blog.profile', compact('user', 'posts'));
     }
 
     public function editProfile()
     {
-        $user = $this->authRepository->getUserById(Auth::id());
+        $user = Auth::user();
         return view('blog.update-profile', compact('user'));
     }
 

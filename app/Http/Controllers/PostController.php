@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Post;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-
 use App\Repositories\PostRepository;
 use Illuminate\Http\Request;
 
@@ -30,58 +30,47 @@ class PostController extends Controller
     }
 
 
-    public function show($id)
+    public function show(Post $post)
     {
-        $post = $this->postRepository->show($id);
-        if (!$post) {
-            return abort(404, 'undefiend post');
-        }
         return view("blog.show", compact("post"));
     }
 
+    public function create()
+    {
+        return view("blog.create");
+    }
+
+
     public function store(StorePostRequest $request)
     {
-        $post = $this->postRepository->store($request->all());
-        if (! $this->authorize('create', $post)) {
-            return abort(403, "You are unaithorized");
-        }
+        $this->authorize('create', Post::class);
+
+        $this->postRepository->store($request->all());
+
         return redirect()->route('home')->with('success', 'Post created successfully!');
     }
 
-    public function edit($id)
+    public function edit(Post $post)
     {
-        $post = $this->postRepository->show($id);
-        if (!$post) {
-            return abort(404, 'undefiend post');
-        }
         return view("blog.update", compact("post"));
     }
 
-    public function update(UpdatePostRequest $request, $id)
+    public function update(UpdatePostRequest $request, Post $post)
     {
-        $post = $this->postRepository->update($request, $id);
-        if (!$post) {
-            return abort(404, 'undefiend post');
-        }
-        if (! $this->authorize('update', $post)) {
-            return abort(403, "You are unaithorized");
-        }
+
+        $this->authorize('update', $post);
+
+        $this->postRepository->update($request, $post);
+
         return redirect()->route('post.show', $post->id)->with('success', 'Post updated successfully!');
     }
 
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        $post = $this->postRepository->show($id);
 
-        if (!$post) {
-            return abort(404, 'Undefined post');
-        }
+        $this->authorize('delete', $post);
 
-        if (! $this->authorize('delete', $post)) {
-            return abort(403, "You are unauthorized");
-        }
-
-        $this->postRepository->delete($id);
+        $this->postRepository->delete($post);
 
         return redirect()->route('home')->with('success', 'Post deleted successfully!');
     }

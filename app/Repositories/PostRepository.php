@@ -45,10 +45,8 @@ class PostRepository implements PostInterface
         return $post;
     }
 
-    public function update($request, $id)
+    public function update($request, $post)
     {
-        $post = Post::findOrFail($id);
-
 
         if ($request->hasFile('image')) {
             if ($post->image) {
@@ -62,10 +60,8 @@ class PostRepository implements PostInterface
         return $post;
     }
 
-    public function delete($id)
+    public function delete($post)
     {
-
-        $post = Post::findOrFail($id);
         return $post->delete();
     }
 

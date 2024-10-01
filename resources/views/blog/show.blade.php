@@ -28,7 +28,7 @@
             @endforeach
         </div>
 
-        <script>
+        <script type="module">
             document.getElementById('commentForm').addEventListener('submit', function(event) {
                 event.preventDefault(); // Prevent the default form submission
 
@@ -41,19 +41,30 @@
                         },
                         body: formData
                     })
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) {
+                            return response.text().then(text => {
+                                throw new Error(text);
+                            });
+                        }
+                        return response.json();
+                    })
                     .then(data => {
                         if (data.success) {
                             const commentsSection = document.getElementById('comments-section');
                             const newComment = document.createElement('div');
                             newComment.innerHTML =
-                                `<x-comment username="${data.comment.user}" content="${data.comment.body}" />`;
+                                `<x-comment username="${data.comment.username}" content="${data.comment.comment}" />`;
                             commentsSection.appendChild(newComment);
-
                             document.getElementById('comment').value = ''; // Clear comment input
+                        } else {
+                            console.error('Error:', data.message); // Handle success but error in data
                         }
                     })
-                    .catch(error => console.error('Error:', error));
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred while adding your comment. Please try again.');
+                    });
             });
 
             const postId = document.getElementById('post_id').value;
@@ -63,7 +74,7 @@
                     const commentsSection = document.getElementById('comments-section');
                     const newComment = document.createElement('div');
                     newComment.innerHTML =
-                        `<x-comment username="${e.comment.user}" content="${e.comment.body}" />`;
+                        `<x-comment username="${e.comment.username}" content="${e.comment.comment}" />`;
                     commentsSection.appendChild(newComment);
                 });
         </script>
