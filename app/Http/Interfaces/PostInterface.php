@@ -6,7 +6,7 @@ interface PostInterface
 {
     public function index();
 
-    public function show($id);
+    public function show($post);
 
     public function store($request);
 
